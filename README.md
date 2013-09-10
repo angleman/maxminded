@@ -24,7 +24,7 @@ var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 maxminded.init({ license: 'MAXMIND_LICENSE', memoryCache: true });
 ```
 
-## Geo Lookup with CloudFlare fallback
+## Lookup with CloudFlare fallback
 
 This requires [CloudFlare](http://cloudflare.com) to be enabled for your domain so the cf-country header will be populated
 
