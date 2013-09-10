@@ -1,6 +1,6 @@
 {
   "name": "maxminded",
-  "version": "0.1.15", 
+  "version": "0.1.16", 
   "description": "Auto updating maxmind GeoIP lookup for free and paid maxmind accounts and optional cloudflare fallback",
   "main": "maxminded.js",
   "scripts": {
@@ -17,14 +17,14 @@
      "geobase",
      "geo lookup",
      "ip base",
+     "ip lookup",
      "geocode",
      "timezone",
      "geolite",
      "geocity",
      "auto",
      "free",
-     "paid",
-     "asn" 
+     "paid"
   ],
   "author": "angleman",
   "license": "MIT",
