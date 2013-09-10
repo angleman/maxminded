@@ -21,6 +21,7 @@ var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 ## Paid Geo Data Example
 
 ```
+var maxminded = require('maxminded');
 maxminded.init({ license: 'MAXMIND_LICENSE', memoryCache: true });
 ```
 
