@@ -39,7 +39,7 @@ maxminded({
 })
 ```
 
-For additional parameters see: [node-maxmind](https://github.com/runk/node-maxmind), [node-cron](https://github.com/ncb000gt/node-cron) and [maxmind-loader](https://github.com/angleman/maxmind-loader)
+For additional parameter details see: [node-maxmind](https://github.com/runk/node-maxmind), [node-cron](https://github.com/ncb000gt/node-cron) and [maxmind-loader](https://github.com/angleman/maxmind-loader)
 
 ## Note for PaaS users (like nodejitsu)
 
