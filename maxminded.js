@@ -1,15 +1,14 @@
 var maxmind    = require('maxmind')        // runk/node-maxmind
   , loader     = require('maxmind-loader') // angleman/maxmind-loader
   , geos       = require('geos-major')     // angleman/geos-major
-  , cron       = require('cron').CronJob   // ncb000gt/node-cron
+  , cron       = require('cron')           // ncb000gt/node-cron
   , time       = require('time')           // TooTallNate/node-time
 ;
 
 
 
-var maxminded = {
+var maxminded = function() {
 
-	this.maxmind_initalized = false;
 	this.load_begin = function() {
 		console.log('load begin');
 		loader(this.options, this.load_done);
@@ -32,21 +31,23 @@ var maxminded = {
 	};
 
 	this.init = function(options) {
-		if (typeof options == 'string') {
-			options      = { init: options };
-		}
-
-		if (options.init) {
-			maxmind.init(options.init, options);
-			this.maxmind_initalized = true;
-		}
-
 		options          = options          || {};
-		options.cronTime = options.cronTime || '00 30 03 * * 3';
-		options.start    = options.start    || false;
-		this.options     = options;
 
-		this.job = new cronJob(options, this.load_begin, this.load_done);
+		if (typeof options == 'string') {
+			options      = { initLoad: options };
+		};
+
+		if (options.initLoad) {
+			maxmind.init(options.initLoad, options);
+			this.maxmind_initalized = true;
+		};
+
+		options.cronTime   = options.cronTime || '00 30 03 * * 3';
+		options.start      = options.start    || false;
+		this.options       = options;
+		options.onTick     = this.load_begin;
+		options.onComplete = this.load_done;
+		this.job           = new cron.CronJob(options);
 		this.job.start();
 	};
 
@@ -54,12 +55,12 @@ var maxminded = {
 
 	// maxmind wrapper
 	this.getLocation = function (options, headers) {
-		var result = undefined;
+		var result;
 		if (this.maxmind_initalized) {
 			result = maxmind.getLocation(options);
 		}
-		if (!result && headers && headers['cf-ipcountry']) {
-			result = geos.getCountry(headers['cf-ipcountry']);
+		if (!result && headers) {
+			result = geos.country(headers['cf-ipcountry']);
 		}
 		return result;
 	};
@@ -74,6 +75,7 @@ var maxminded = {
 	};
 }
 
+var minded = new maxminded;
 
 
-module.exports = maxminded;
+module.exports = minded;
