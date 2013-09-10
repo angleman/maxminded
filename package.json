@@ -35,6 +35,8 @@
     "node" : ">=0.8.0" 
   },
   "dependencies": {
+    "cron":"~1.0.1",
+    "time":"~0.9.2",
     "maxmind":"~0.3.1",
     "maxmind-loader": "~0.1.5",
     "geos-major":"~0.5.4"
