@@ -21,21 +21,31 @@ var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 ## Paid Geo Data Example
 
 ```
-maxminded({ license: 'MAXMIND_LICENSE', memoryCache: true });
+maxminded.init({ license: 'MAXMIND_LICENSE', memoryCache: true });
 ```
+
+## Geo Lookup with CloudFlare fallback
+
+This requires [CloudFlare](http://cloudflare.com) to be enabled for your domain so the cf-country header will be populated
+
+```
+var geo = maxminded.getLocation('66.6.44.4', req.headers); 
+```
+
 
 ## Common optional parameters with defaults
 
 Gives weekly GeoLiteCity data updates and 18,000 lookups / second as the caches are disabled
 
 ```
-maxminded({
+maxminded.init({
 	license:     undefined,        // maxmind license key, for paid data. Ex: 'S0meK3yIdHere'
 	indexCache:  false,            // use maxmind-node indexCache  at 80,000 lookups / second or
 	memoryCache: false,            // use maxmind-node memoryCache at 130,000 lookups / second
 	cronTime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
 	timeZone:    undefined,        // timezone based updates, ex: "America/Los_Angeles"
 	start:       false,            // load immediately
+	init:        undefined,        // initialize with local data, same as init(string_filename)
 })
 ```
 
