@@ -45,7 +45,7 @@ maxminded.init({
 	cronTime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
 	timeZone:    undefined,        // timezone based updates, ex: "America/Los_Angeles"
 	start:       false,            // load immediately
-	init:        undefined,        // initialize with local data, same as init(string_filename)
+	initLoad:    undefined,        // initialize with local data, same as init(string_filename)
 })
 ```
 
