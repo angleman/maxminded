@@ -24,15 +24,16 @@ var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 maxminded({ license: 'MAXMIND_LICENSE', memoryCache: true });
 ```
 
-## Optional parameters with default values
+## Common optional parameters with default values
+
 ```
 maxminded({
-	license:     undefined,             // maxmind license key, for use with paid data
-	indexCache:  false,                 // use maxmind-node indexCache  at 80,000 lookups / second or
-	memoryCache: false,                 // use maxmind-node memoryCache at 130,000 lookups / second, 18,000 lookups / second with no caching
-	crontime:    '00 30 03 * * 3',      // run every wednesday at 3:30am
-	timeZone:    "America/Los_Angeles", // 
-	start:       false,                 // load immediately
+	license:     undefined,         // maxmind license key, for use with paid data, ex: 'S0meK3yIdHere'
+	indexCache:  false,             // use maxmind-node indexCache  at 80,000 lookups / second or
+	memoryCache: false,             // use maxmind-node memoryCache at 130,000 lookups / second. Default is 18,000 lookups / second
+	crontime:    '00 30 03 * * 3',  // run every Wednesday at 3:30am
+	timeZone:    undefined,         // timezone based updates, ex: "America/Los_Angeles"
+	start:       false,             // load immediately
 })
 ```
 
