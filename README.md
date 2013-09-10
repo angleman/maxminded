@@ -24,13 +24,15 @@ var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 maxminded({ license: 'MAXMIND_LICENSE', memoryCache: true });
 ```
 
-## Common optional parameters with default values
+## Common optional parameters with defaults
+
+Gives weekly GeoLiteCity data updates and 18,000 lookups / second as the caches are disabled
 
 ```
 maxminded({
-	license:     undefined,         // maxmind license key, for use with paid data, ex: 'S0meK3yIdHere'
+	license:     undefined,         // maxmind license key, for paid data. Ex: 'S0meK3yIdHere'
 	indexCache:  false,             // use maxmind-node indexCache  at 80,000 lookups / second or
-	memoryCache: false,             // use maxmind-node memoryCache at 130,000 lookups / second. Default is 18,000 lookups / second
+	memoryCache: false,             // use maxmind-node memoryCache at 130,000 lookups / second
 	crontime:    '00 30 03 * * 3',  // run every Wednesday at 3:30am
 	timeZone:    undefined,         // timezone based updates, ex: "America/Los_Angeles"
 	start:       false,             // load immediately
