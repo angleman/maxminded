@@ -14,7 +14,7 @@ Just like [node-maxmind](https://github.com/runk/node-maxmind) when using free [
 
 ```javascript
 var maxmind = require('maxminded');
-maxmind.init('GeoLiteCity');
+maxmind.init('GeoLiteCity'); // initialize with local data and get updates every Wednesday
 var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 ```
 
