@@ -33,7 +33,7 @@ maxminded({
 	license:     undefined,        // maxmind license key, for paid data. Ex: 'S0meK3yIdHere'
 	indexCache:  false,            // use maxmind-node indexCache  at 80,000 lookups / second or
 	memoryCache: false,            // use maxmind-node memoryCache at 130,000 lookups / second
-	crontime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
+	cronTime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
 	timeZone:    undefined,        // timezone based updates, ex: "America/Los_Angeles"
 	start:       false,            // load immediately
 })
@@ -50,3 +50,8 @@ maxminded.init({start: true});
 ```
 
 ## License: MIT
+
+Dependencies:
+
+[![cron](http://badgr.co/mit/cron.png?bg=%234ed50e)](http://github.com/ncb000gt/node-cron) [![geos-major](http://badgr.co/mit/geos-major.png?bg=%234ed50e)](https://github.com/angleman/geos-major) [![maxmind-loader](http://badgr.co/mit/maxmind-loader.png?bg=%234ed50e)](https://github.com/angleman/maxmind-loader) [![maxmind](http://badgr.co/mit/maxmind.png?bg=%234ed50e)](git@github.com:runk/node-maxmind)
+[![time](http://badgr.co/mit*/time.png?bg=%234ed50e)](https://github.com/TooTallNate/node-time)
