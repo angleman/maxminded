@@ -8,16 +8,19 @@ var maxmind    = require('maxmind')        // runk/node-maxmind
 
 
 var maxminded = {
+
+	this.maxmind_initalized = false;
 	this.load_begin = function() {
 		console.log('load begin');
 		loader(this.options, this.load_done);
 	};
 
-	this.load_done = function (err, res, data){
+	this.load_done = function (err, datapath){
 		if (err) {
 			this.handle_error(err);
 		} else {
-
+			maxmind.init(datapath, this.options);
+			this.maxmind_initalized = true;
 		}
 	};
 
@@ -29,7 +32,16 @@ var maxminded = {
 	};
 
 	this.init = function(options) {
-		options = options || {};
+		if (typeof options == 'string') {
+			options      = { init: options };
+		}
+
+		if (options.init) {
+			maxmind.init(options.init, options);
+			this.maxmind_initalized = true;
+		}
+
+		options          = options          || {};
 		options.cronTime = options.cronTime || '00 30 03 * * 3';
 		options.start    = options.start    || false;
 		this.options     = options;
@@ -40,11 +52,19 @@ var maxminded = {
 
 
 
-	// maxmind pass-thru
-	this.getLocation = function (options) {
-		return maxmind.getLocation(options);
+	// maxmind wrapper
+	this.getLocation = function (options, headers) {
+		var result = undefined;
+		if (this.maxmind_initalized) {
+			result = maxmind.getLocation(options);
+		}
+		if (!result && headers && headers['cf-ipcountry']) {
+			result = geos.getCountry(headers['cf-ipcountry']);
+		}
+		return result;
 	};
 
+	// maxmind pass-thru
 	this.getCountry = function (options) {
 		return maxmind.getCountry(options);
 	};
