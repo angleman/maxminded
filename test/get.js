@@ -1,16 +1,20 @@
-var should    = require('should')
-  , maxloader = require('../maxminded.js')
+var should  = require('should')
+  , maxmind = require('../maxminded.js')
 ;
 
 
 
-describe('load free', function() {
-    describe('successful loading GeoLiteCity.dat.gz', function() {
+describe('CloudFlare', function() {
+    describe('successful USA lookup', function() {
 
-        var flag = true;
-
-        it("flag should be true", function(){    
-            flag.should.equal(true);  
+        maxmind.init();
+        it("flag should be true", function(){
+            var header = {'cf-ipcountry':'US'};
+            var geo = maxmind.getLocation('66.6.44.4', header);
+            should.exist(geo);
+            geo.lat.should.equal(38);  
         }); 
+
     });
+
 });
