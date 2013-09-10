@@ -33,7 +33,7 @@ var geo = maxminded.getLocation('66.6.44.4', req.headers);
 ```
 
 
-## Common optional parameters with defaults
+## Optional parameters with defaults
 
 Gives weekly GeoLiteCity data updates and 18,000 lookups / second as the caches are disabled
 
