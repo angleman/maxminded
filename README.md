@@ -39,7 +39,7 @@ maxminded({
 
 For additional parameters see: [node-maxmind](https://github.com/runk/node-maxmind), [node-cron](https://github.com/package/cron) and [maxmind-loaded](https://github.com/angleman/maxmind-loaded)
 
-## Note for nodejitsu users
+## Note for nodejitsu and other PaaS users
 
 A bonus of using maxminded is that your geo data doesn't need to be pushed to nodejitsu with your code deploy. The geo ip data can be pulled directly from maxmind in compressed form when your application launches.
 
