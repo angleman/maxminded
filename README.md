@@ -10,11 +10,11 @@ npm install maxminded
 
 ## Usage
 
-Just like [node-maxmind](https://github.com/runk/node-maxmind) when using free [Maxmind GeoLiteCity](http://dev.maxmind.com/geoip/legacy/geolite/) data.
+Drop in replacement of [node-maxmind](https://github.com/runk/node-maxmind) when using free [Maxmind GeoLiteCity](http://dev.maxmind.com/geoip/legacy/geolite/) data.
 
 ```javascript
-var maxmind = require('maxminded');
-maxmind.init('GeoLiteCity'); // initialize with local data and get updates every Wednesday
+var maxmind = require('maxminded');              // difference: require maxminded instead of maxmind
+maxmind.init('GeoLiteCity');                     // init with local data and Wednesday updates 
 var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 ```
 
