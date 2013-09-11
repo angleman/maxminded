@@ -1,6 +1,6 @@
 {
   "name": "maxminded",
-  "version": "0.1.20", 
+  "version": "0.1.21", 
   "description": "Auto updating maxmind GeoIP lookup for free and paid maxmind accounts and optional cloudflare fallback",
   "main": "maxminded.js",
   "scripts": {
