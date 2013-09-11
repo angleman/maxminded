@@ -6,22 +6,28 @@ var maxmind    = require('maxmind')        // runk/node-maxmind
 ;
 
 
+var maxmind_initialized = false;
 
 var maxminded = function() {
 
-	this.load_begin = function() {
-		console.log('load begin');
-		loader(this.options, this.load_done);
+	this.load_begin = function(start_callback, start_options) {
+		start_options = start_options || this.options;
+
+		function load_done(err, datapath){
+			if (err) {
+				this.handle_error(err);
+			} else {
+				maxmind.init(datapath, start_options);
+				maxmind_initialized = true;
+				if (start_callback) {
+					start_callback(datapath);
+				}
+			};
+		}
+
+		loader(this.options, load_done);
 	};
 
-	this.load_done = function (err, datapath){
-		if (err) {
-			this.handle_error(err);
-		} else {
-			maxmind.init(datapath, this.options);
-			this.maxmind_initalized = true;
-		}
-	};
 
 	this.handle_error = function (err){
 		console.log(err);
@@ -39,28 +45,40 @@ var maxminded = function() {
 
 		if (options.initLoad) {
 			maxmind.init(options.initLoad, options);
-			this.maxmind_initalized = true;
+			maxmind_initialized = true;
 		};
 
 		options.cronTime   = options.cronTime || '00 30 03 * * 3';
-		options.start      = options.start    || false;
 		this.options       = options;
 		options.onTick     = this.load_begin;
 		options.onComplete = this.load_done;
 		this.job           = new cron.CronJob(options);
 		this.job.start();
+
+		if (options.start) {
+			this.load_begin(options.start);
+		}
 	};
 
 
 
 	// maxmind wrapper
-	this.getLocation = function (options, headers) {
+	this.getLocation = function (ip, headers) {
 		var result;
-		if (this.maxmind_initalized) {
-			result = maxmind.getLocation(options);
+		if (maxmind_initialized) {
+			result = maxmind.getLocation(ip);
 		}
 		if (!result && headers) {
 			result = geos.country(headers['cf-ipcountry']);
+			if (result) {
+				result = {
+					countryCode: headers['cf-ipcountry'],
+//					countryName: geos.                      // todo: add countryname to geo-minor
+					latitude: result.lat,
+					longitude: result.lon
+
+				}
+			}
 		}
 		return result;
 	};
