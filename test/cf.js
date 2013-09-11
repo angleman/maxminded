@@ -15,8 +15,10 @@ describe('CloudFlare', function() {
         it("latitude should be 38", function(){
             var header = {'cf-ipcountry':'US'};
             var geo = maxminded.getLocation('66.6.44.4', header);
+
             should.exist(geo);
-            geo.latitude.should.equal(38);  
+            should.exist(geo.latitude);
+            geo['latitude'].should.equal(38);  
         }); 
 
     });
