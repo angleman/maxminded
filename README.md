@@ -45,7 +45,7 @@ maxminded.init({
 	memoryCache: false,            // use maxmind-node memoryCache at 130,000 lookups / second
 	cronTime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
 	timeZone:    undefined,        // timezone based updates, ex: "America/Los_Angeles"
-	start:       false,            // load immediately
+	start:       undefined,        // load immediately and callback when complete
 	initLoad:    undefined,        // initialize with local data, same as init(string_filename)
 })
 ```
@@ -57,7 +57,9 @@ For additional parameter details see: [node-maxmind](https://github.com/runk/nod
 A bonus of using maxminded is that your geo data doesn't need to be pushed to your PaaS with your code deploy. The geo ip data can be pulled directly from maxmind in compressed form when your application launches.
 
 ```
-maxminded.init({start: true});
+maxminded.init({start: function() {
+    var geo = maxminded.getLocation('66.6.44.4'); // GeoCityLite loaded w/weekly updates 
+}});
 ```
 
 ## License: MIT
