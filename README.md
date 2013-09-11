@@ -66,5 +66,5 @@ maxminded.init({start: function() {
 
 Dependencies:
 
-[![cron](http://badgr.co/mit/cron.png?bg=%234ed50e)](http://github.com/ncb000gt/node-cron) [![geos-major](http://badgr.co/mit/geos-major.png?bg=%234ed50e)](https://github.com/angleman/geos-major) [![maxmind-loader](http://badgr.co/mit/maxmind-loader.png?bg=%234ed50e)](https://github.com/angleman/maxmind-loader) [![maxmind](http://badgr.co/mit/maxmind.png?bg=%234ed50e)](git@github.com:runk/node-maxmind)
-[![time](http://badgr.co/mit*/time.png?bg=%234ed50e)](https://github.com/TooTallNate/node-time)
+[![cron](http://badgr.co/mit/cron.png?bg=%234ed50e "1.0.1")](http://github.com/ncb000gt/node-cron) [![geos-major](http://badgr.co/mit/geos-major.png?bg=%234ed50e "1.1.2")](https://github.com/angleman/geos-major) [![maxmind-loader](http://badgr.co/mit/maxmind-loader.png?bg=%234ed50e "0.2.1")](https://github.com/angleman/maxmind-loader) [![maxmind](http://badgr.co/mit/maxmind.png?bg=%234ed50e "0.3.1")](git@github.com:runk/node-maxmind)
+[![time](http://badgr.co/mit*/time.png?bg=%234ed50e "0.9.2")](https://github.com/TooTallNate/node-time)
