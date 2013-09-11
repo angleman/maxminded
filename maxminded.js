@@ -70,15 +70,6 @@ var maxminded = function() {
 		}
 		if (!result && headers) {
 			result = geos.country(headers['cf-ipcountry']);
-			if (result) {
-				result = {
-					countryCode: headers['cf-ipcountry'],
-//					countryName: geos.                      // todo: add countryname to geo-minor
-					latitude: result.lat,
-					longitude: result.lon
-
-				}
-			}
 		}
 		return result;
 	};
