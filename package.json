@@ -42,7 +42,7 @@
     "geos-major":"~1.1.2"
   },
   "devDependencies": {
-     "license-md": "~0.1.12",
+     "license-md": "~0.1.13",
      "grunt":      "~0.4.1",
      "grunt-bump": "~0.0.11",
      "grunt-license": "~0.1.4",
