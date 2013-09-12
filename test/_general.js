@@ -5,10 +5,10 @@ var should = require('should')
 
 // clean up from prior run
 if (fs.existsSync('/tmp/GeoLiteCity.dat')) {
-	fs.unlinkSync('/tmp/GeoLiteCity.dat'));
+	fs.unlinkSync('/tmp/GeoLiteCity.dat');
 }
 if (fs.existsSync('/tmp/GeoLiteCity.dat.gz')) {
-	fs.unlinkSync('/tmp/GeoLiteCity.dat.gz'));
+	fs.unlinkSync('/tmp/GeoLiteCity.dat.gz');
 }
 
 describe('package', function() {
