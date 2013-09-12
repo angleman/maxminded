@@ -4,8 +4,13 @@ var should    = require('should')
   , geofile   = '/tmp/GeoLiteCity.dat'
 ;
 
+
+// clean up from prior run
 if (fs.existsSync(geofile)) {
     fs.unlinkSync(geofile);
+}
+if (fs.existsSync(geofile+'.gz')) {
+    fs.unlinkSync(geofile+'.gz');
 }
 
 
