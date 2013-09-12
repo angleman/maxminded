@@ -1,8 +1,8 @@
-var maxmind    = require('maxmind')        // runk/node-maxmind
-  , loader     = require('maxmind-loader') // angleman/maxmind-loader
-  , geos       = require('geos-major')     // angleman/geos-major
-  , cron       = require('cron')           // ncb000gt/node-cron
-  , time       = require('time')           // TooTallNate/node-time
+var maxmind        = require('maxmind')        // runk/node-maxmind
+  , maxmind_loader = require('maxmind-loader') // angleman/maxmind-loader
+  , geos           = require('geos-major')     // angleman/geos-major
+  , cron           = require('cron')           // ncb000gt/node-cron
+  , time           = require('time')           // TooTallNate/node-time
 ;
 
 
@@ -27,15 +27,15 @@ var maxminded = function() {
 			};
 		}
 
-		loader(this.options, load_done);
+		maxmind_loader(start_options, load_done);
 	};
 
 
 	this.handle_error = function (err){
 		console.log(err);
-		if (this.retry) {
+//		if (this.retry) {
 			// todo: reschedule job
-		}
+//		}
 	};
 
 	this.init = function(options) {
@@ -53,7 +53,7 @@ var maxminded = function() {
 		};
 
 		options.cronTime   = options.cronTime || '00 30 03 * * 3';
-		
+
 		this.options       = options;
 		options.onTick     = this.load_begin;
 		options.onComplete = this.load_done;
@@ -61,7 +61,7 @@ var maxminded = function() {
 		this.job.start();
 
 		if (options.start) {
-			this.load_begin(options.start);
+			this.load_begin(options.start, options);
 		}
 	};
 
