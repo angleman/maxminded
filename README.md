@@ -43,6 +43,7 @@ maxminded.init({
 	license:     undefined,        // maxmind license key, for paid data. Ex: 'S0meK3yIdHere'
 	indexCache:  false,            // use maxmind-node indexCache  at 80,000 lookups / second or
 	memoryCache: false,            // use maxmind-node memoryCache at 130,000 lookups / second
+    dest:        '/tmp/',          // destination data folder
 	cronTime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
 	timeZone:    undefined,        // timezone based updates, ex: "America/Los_Angeles"
 	start:       undefined,        // load immediately and callback when complete

@@ -10,6 +10,8 @@ var maxmind_initialized = false;
 
 var maxminded = function() {
 
+	this.options = {};
+
 	this.load_begin = function(start_callback, start_options) {
 		start_options = start_options || this.options;
 
@@ -43,12 +45,15 @@ var maxminded = function() {
 			options      = { initLoad: options };
 		};
 
+		options.dest     = options.dest || '/tmp/';
+
 		if (options.initLoad) {
 			maxmind.init(options.initLoad, options);
 			maxmind_initialized = true;
 		};
 
 		options.cronTime   = options.cronTime || '00 30 03 * * 3';
+		
 		this.options       = options;
 		options.onTick     = this.load_begin;
 		options.onComplete = this.load_done;
