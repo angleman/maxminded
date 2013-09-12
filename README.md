@@ -1,4 +1,4 @@
-# maxminded [![NPM version](https://badge.fury.io/js/maxminded.png?branch=master)](http://badge.fury.io/js/maxminded) [![Build Status](https://travis-ci.org/angleman/maxminded.png?branch=master)](https://travis-ci.org/angleman/maxminded) [![Dependency Status](https://gemnasium.com/angleman/maxminded.png?branch=master)](https://gemnasium.com/angleman/maxminded) [![License](http://badgr.co/use/MIT.png?bg=%234ed50e)](http://opensource.org/licenses/MIT)
+# maxminded [![NPM version](https://badge.fury.io/js/maxminded.png?branch=master)](http://badge.fury.io/js/maxminded) [![Build Status](https://travis-ci.org/angleman/maxminded.png?branch=master)](https://travis-ci.org/angleman/maxminded) [![Dependency Status](https://gemnasium.com/angleman/maxminded.png?branch=master)](https://gemnasium.com/angleman/maxminded) [![License](http://badgr.co/use/MIT.png?bg=%234ed50e)](#licensemit)
 
 Auto updating maxmind GeoIP lookup for free and paid maxmind accounts with optional cloudflare fallback. Leveringing the excellent [node-maxmind](https://github.com/runk/node-maxmind) package, maxminded provides a production oriented option that manages regular data updates. Maxminded provides fallback geoip lookup via [geos-major](https://github.com/angleman/geos-major) which leverages [CloudFlare](https://cloudflare.com) request country code headers to look up geo data when maxmind has a lookup miss.
 
@@ -66,8 +66,8 @@ maxminded.init({start: function() {
 
 Dependencies:
 
-[![cron](http://badgr.co/mit/cron.png?bg=%23339e00 "cron@1.0.1")](http://github.com/ncb000gt/node-cron)
-[![geos-major](http://badgr.co/mit/geos-major.png?bg=%23339e00 "geos-major@1.1.2")](https://github.com/angleman/geos-major)
-[![maxmind-loader](http://badgr.co/mit/maxmind-loader.png?bg=%23339e00 "maxmind-loader@0.2.1")](https://github.com/angleman/maxmind-loader)
-[![maxmind](http://badgr.co/mit/maxmind.png?bg=%23339e00 "maxmind@0.3.1")](https://github.com/runk/node-maxmind)
-[![time](http://badgr.co/mit*/time.png?bg=%23339e00 "time@0.9.2")](https://github.com/TooTallNate/node-time)
+[![cron](http://badgr.co/cron/MIT.png?bg=%23339e00 "cron@1.0.1 Massachusetts Institute of Technology")](http://github.com/ncb000gt/node-cron)
+[![geos-major](http://badgr.co/geos-major/MIT.png?bg=%23339e00 "geos-major@1.1.2 Massachusetts Institute of Technology")](https://github.com/angleman/geos-major)
+[![maxmind-loader](http://badgr.co/maxmind-loader/MIT.png?bg=%23339e00 "maxmind-loader@0.2.1 Massachusetts Institute of Technology")](https://github.com/angleman/maxmind-loader)
+[![maxmind](http://badgr.co/maxmind/MIT.png?bg=%23339e00 "maxmind@0.3.1 Massachusetts Institute of Technology")](https://github.com/runk/node-maxmind)
+[![time](http://badgr.co/time/MIT*.png?bg=%23339e00 "time@0.9.2 Massachusetts Institute of Technology (text scan guess)")](https://github.com/TooTallNate/node-time)
