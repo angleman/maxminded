@@ -22,12 +22,17 @@ describe('successful loading', function() {
         var location;
         beforeEach(function(done){
             this.timeout(15 * 60 * 1000); // allow test to run for 15 minutes
-            maxminded.init({start: function(datapath) {
+            maxminded.init({
+                start: true
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                    should.not.exist(err);
+                }
                 location = maxminded.getLocation('66.6.44.4');
                 done();
-            }});
-
-        });   
+            });
+        }); 
 
         it("location.countryCode should be US", function(){    
             should.exist(location);

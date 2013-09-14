@@ -22,7 +22,9 @@ var location = maxmind.getLocation('66.6.44.4'); // City/Location lookup
 
 ```js
 var maxminded = require('maxminded');
-maxminded.init({ license: 'MAXMIND_LICENSE', memoryCache: true });
+maxminded.init({ license: 'MAXMIND_LICENSE', memoryCache: true }, function(err) {
+    if (err) console.log(err)
+});
 ```
 
 ## Lookup with CloudFlare fallback
@@ -44,6 +46,8 @@ maxminded.init({
 	cronTime:    '00 30 03 * * 3', // run every Wednesday at 3:30am
 	start:       undefined,        // load immediately and callback when complete
 	initLoad:    undefined,        // initialize with local data, same as init(string_filename)
+}, function(err) {                 // callback when maxmind.init() occurs
+    console.log(err);
 })
 ```
 
