@@ -1,5 +1,5 @@
 var maxmind        = require('maxmind')        // runk/node-maxmind
-  , maxmind_loader = require('maxmind-loader') // angleman/maxmind-loader
+  , maxmind_reload = require('maxmind-reload') // angleman/maxmind-reload
   , geos           = require('geos-major')     // angleman/geos-major
   , cron           = require('cron')           // ncb000gt/node-cron
   , time           = require('time')           // TooTallNate/node-time
@@ -27,7 +27,7 @@ var maxminded = function() {
 			};
 		}
 
-		maxmind_loader(start_options, load_done);
+		maxmind_reload(start_options, load_done);
 	};
 
 
