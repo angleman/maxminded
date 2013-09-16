@@ -14,11 +14,13 @@ var maxmind        = require('maxmind')        // runk/node-maxmind
 var maxminded = function() {
 
 	function handle_error(message) {
-		var err = new Error(message);
+		if (typeof message == 'string') {
+			message = new Error('maxminded: ' + message);
+		}
 		if (global_callback) {
-			global_callback(err)
+			global_callback(message)
 		} else {
-			throw err;
+			throw message;
 		}
 	}
 
@@ -31,7 +33,7 @@ var maxminded = function() {
 				global_callback(null, datapath);
 			}
 		} else {
-			handle_error('maxminded: can\'t initialize maxmind, missing file ' + datapath);
+			handle_error('Can\'t initialize maxmind, missing file ' + datapath);
 		}
 	};
 
@@ -56,11 +58,14 @@ var maxminded = function() {
 		if (typeof options == 'string') {
 			options        = { initLoad: options };
 		};
+		if (typeof options.silent == 'undefined') {
+			options.silent = true;                   // don't send maxmind-reload attempt messages
+		};
 		options.dest       = options.dest     || '/tmp/';
-		global_callback      = callback;
+		global_callback    = callback;
 
 		if (options.initLoad) {
-			init_maxmind(options.initLoad, options);
+			init_maxmind(options.initLoad);
 		};
 
 		options.cronTime   = options.cronTime || '00 30 03 * * 3';
