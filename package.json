@@ -39,7 +39,7 @@
     "time": "~0.9.2",
     "maxmind": "~0.3.1",
     "geos-major": "~1.1.2",
-    "maxmind-reload": "~0.1.6"
+    "maxmind-reload": "~0.1.9"
   },
   "devDependencies": {
     "license-md": "~0.3.6",
