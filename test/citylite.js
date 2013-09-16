@@ -16,7 +16,7 @@ if (fs.existsSync(geofile+'.gz')) {
 
 
 describe('successful loading', function() {
-    describe('GeoLiteCity.dat.gz', function() {
+    describe('GeoLiteCity.dat', function() {
 
         var flag = false;
         var location;
@@ -28,10 +28,25 @@ describe('successful loading', function() {
                 if (err) {
                     console.log(err);
                     should.not.exist(err);
+                } else {
+                    if (fs.existsSync(geofile)) {
+                        var fstat = fs.statSync(geofile);
+                        var size  = fstat.size;
+                        if (size < 1000000) {
+                            throw new Eror('maxminded citylite.js test: ' + geofile + ' invalid with size of: ' + size);
+                        }
+                    } else {
+                        throw new Error('maxminded citylite.js test: ' + goefile + ' is missing');
+                    }
+                    flag = true;
+                    location = maxminded.getLocation('66.6.44.4');
                 }
-                location = maxminded.getLocation('66.6.44.4');
                 done();
             });
+        }); 
+
+        it("should load successfully", function(){    
+            flag.should.equal(true);
         }); 
 
         it("location.countryCode should be US", function(){    
